@@ -609,7 +609,7 @@ static int pn54x_probe(struct i2c_client *client,
 	pn54x_dev->clkreq_gpio = pdata->clkreq_gpio;
 	pn54x_dev->pvdd_reg = pdata->pvdd_reg;
 	pn54x_dev->vbat_reg = pdata->vbat_reg;
-	pn54x_dev->pmuvcc_reg = pdata->vbat_reg;
+	pn54x_dev->pmuvcc_reg = pdata->pmuvcc_reg;
 	pn54x_dev->sevdd_reg = pdata->sevdd_reg;
 
 	pn54x_dev->client = client;
