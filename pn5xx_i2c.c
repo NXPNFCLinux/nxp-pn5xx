@@ -144,8 +144,8 @@ static int pn544_enable(struct pn54x_dev *dev, int mode)
 	if (MODE_RUN == mode) {
 		pr_info("%s power on\n", __func__);
 		if (gpio_is_valid(dev->firm_gpio))
-			gpio_set_value(dev->firm_gpio, 0);
-		gpio_set_value(dev->ven_gpio, 1);
+			gpio_set_value_cansleep(dev->firm_gpio, 0);
+		gpio_set_value_cansleep(dev->ven_gpio, 1);
 		msleep(100);
 	}
 	else if (MODE_FW == mode) {
@@ -189,8 +189,8 @@ static void pn544_disable(struct pn54x_dev *dev)
 	/* power off */
 	pr_info("%s power off\n", __func__);
 	if (gpio_is_valid(dev->firm_gpio))
-		gpio_set_value(dev->firm_gpio, 0);
-	gpio_set_value(dev->ven_gpio, 0);
+		gpio_set_value_cansleep(dev->firm_gpio, 0);
+	gpio_set_value_cansleep(dev->ven_gpio, 0);
 	msleep(100);
 
 	if(dev->sevdd_reg) regulator_disable(dev->sevdd_reg);
