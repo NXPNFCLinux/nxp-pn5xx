@@ -238,7 +238,7 @@ static ssize_t pn54x_dev_read(struct file *filp, char __user *buf,
 			if (gpio_get_value(pn54x_dev->irq_gpio))
 				break;
 
-			pr_warning("%s: spurious interrupt detected\n", __func__);
+			pr_warn("%s: spurious interrupt detected\n", __func__);
 		}
 	}
 
@@ -261,7 +261,7 @@ static ssize_t pn54x_dev_read(struct file *filp, char __user *buf,
 		return -EIO;
 	}
 	if (copy_to_user(buf, tmp, ret)) {
-		pr_warning("%s : failed to copy to user space\n", __func__);
+		pr_warn("%s : failed to copy to user space\n", __func__);
 		return -EFAULT;
 	}
 	return ret;
